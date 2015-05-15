@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>dojoquery</title>
+	<style type="text/css">
+		.red 
+		{
+			background-color: red;
+		}
+		.blue 
+		{
+			background-color: blue;
+		}
+	</style>
+	<script src="dojoquery"></script>
+
+</head>
+<body>
+	
+	
+	<input type="submit" id="click" value="click me!">
+		<script type="text/javascript">
+		(function() {
+
+			$Dojo = function(Id) {
+
+				element = document.getElementById(Id);
+
+				element.click = function(callback) {
+
+					element.addEventListener("click", function(){
+						callback();
+					})
+				};
+
+				element.hover = function(over,out) {
+
+					element.addEventListener("mouseover", function(){
+						over();
+						
+					});
+
+					element.addEventListener("mouseout",function(){
+						out();
+						
+					});
+
+
+				};
+
+
+				return element;
+			}
+				return $Dojo;
+		} ) ();
+		
+			$Dojo("click").click(function() { console.log("The button was clicked!") });
+			$Dojo("click").hover(function() { console.log("over button!") }, function() { console.log("not over button!") });
+	</script>
+</body>
+</html>
